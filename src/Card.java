@@ -15,6 +15,10 @@ public class Card {
 		return suit;
 	}
 
+	public int getMinValue() {
+		return number.getMinValue();
+	}
+
 	@Override
 	public String toString() {
 		return number.name()+ "(" + suit.name() + ")";
