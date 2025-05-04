@@ -54,33 +54,25 @@ public class BlackjackGame {
 		}
 	}
 
-	// todo: 리팩토링 할 것
 	public void calculateResults() {
 		for (Player player : players) {
-			int betMoney = player.getBetMoney();
-			int profit = 0;
-
-			if (player.isBurst()) { // 플레이어가 버스트
-				profit = -betMoney;
-			} else if (dealer.isBurst()) { // 딜러가 버스트
-				profit = betMoney;
-			} else if (player.isBlackjack() && !dealer.isBlackjack()) { // 플레이어가 블랙잭
-				profit = (int) (betMoney * 1.5);
-			} else if (!player.isBlackjack() && dealer.isBlackjack()) { // 딜러가 블랙잭
-				profit = -betMoney;
-			} else if (player.isBlackjack() && dealer.isBlackjack()) { // 둘 다 블랙잭
-				profit = 0;
-			} else if (player.getScore() > dealer.getScore()) { // 플레이어가 이김
-				profit = betMoney;
-			} else if (player.getScore() < dealer.getScore()) { // 플레이어가 짐
-				profit = -betMoney;
-			} else { // 그 외
-				profit = 0;
-			}
-
+			int profit = calculatePlayerProfit(player);
 			profitResult.put(player.getName(), profit);
 			profitResult.put(dealer.getName(), profitResult.getOrDefault(dealer.getName(), 0) - profit);
 		}
+	}
+
+	private int calculatePlayerProfit(Player player) {
+		int betMoney = player.getBetMoney();
+
+		if (player.isBurst()) return -betMoney;
+		if (dealer.isBurst()) return betMoney;
+		if (player.isBlackjack() && !dealer.isBlackjack()) return (int) (betMoney * 1.5);
+		if (!player.isBlackjack() && dealer.isBlackjack()) return -betMoney;
+		if (player.getScore() > dealer.getScore()) return betMoney;
+		if (player.getScore() < dealer.getScore()) return -betMoney;
+
+		return 0; // 무승부
 	}
 
 	public int getProfit(Player player) {
