@@ -1,4 +1,6 @@
-public class Player extends Participant{
+package domain;
+
+public class Player extends Participant {
 	private final int betMoney;
 	private boolean shouldDraw;
 

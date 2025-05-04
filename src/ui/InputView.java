@@ -1,6 +1,10 @@
+package ui;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import domain.Player;
 
 public class InputView {
 	private final Scanner scanner = new Scanner(System.in);

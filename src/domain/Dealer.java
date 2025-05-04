@@ -1,5 +1,7 @@
+package domain;
+
 public class Dealer extends Participant {
-	protected Dealer() {
+	public Dealer() {
 		super("딜러");
 	}
 

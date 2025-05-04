@@ -1,3 +1,5 @@
+package card;
+
 public class Card {
 	private final CardNumber number;
 	private final Suit suit;

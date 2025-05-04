@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import card.CardNumber;
+
 public class CardNumberTest {
 
 	@Test

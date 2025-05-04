@@ -1,3 +1,7 @@
+package domain;
+
+import card.Card;
+
 public abstract class Participant {
 	protected String name;
 	protected Hand hand = new Hand();

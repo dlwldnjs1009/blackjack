@@ -1,6 +1,10 @@
+package domain;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import card.Card;
 
 public class Hand {
 	private final List<Card> cards = new ArrayList<>();

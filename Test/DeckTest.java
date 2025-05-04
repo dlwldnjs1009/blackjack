@@ -6,6 +6,9 @@ import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import card.Card;
+import deck.Deck;
+
 class DeckTest {
 
 	@Test

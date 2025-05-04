@@ -1,7 +1,14 @@
+package game;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import deck.Deck;
+import domain.Dealer;
+import domain.Player;
+import ui.InputView;
 
 public class BlackjackGame {
 	private final Dealer dealer = new Dealer();

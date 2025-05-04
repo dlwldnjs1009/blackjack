@@ -1,5 +1,11 @@
+package deck;
+
 import java.util.Collections;
 import java.util.Stack;
+
+import card.Card;
+import card.CardNumber;
+import card.Suit;
 
 public class Deck {
 	/**

@@ -1,5 +1,10 @@
+package ui;
+
 import java.util.List;
 import java.util.Map;
+
+import domain.Dealer;
+import domain.Player;
 
 public class OutputView {
 	public void showInitialCards(Dealer dealer, List<Player> players) {
