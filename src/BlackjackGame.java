@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ public class BlackjackGame {
 	private final List<Player> players;
 	private final Deck deck;
 	private final Map<String, Integer> profitResult = new HashMap<>();
+	private final InputView inputView = new InputView();
 
 	public BlackjackGame(List<Player> players) {
 		this(players, new Deck());
@@ -19,12 +21,12 @@ public class BlackjackGame {
 
 	public void play() {
 		dealInitialCards();
-		playPlayersTurn();
+		playPlayersTurn(inputView);
 		playDealerTurn();
 		calculateResults();
 	}
 
-	private void dealInitialCards() {
+	public void dealInitialCards() {
 		for (int i = 0; i < 2; i++) {
 			dealer.draw(deck.draw());
 			for (Player player : players) {
@@ -33,22 +35,27 @@ public class BlackjackGame {
 		}
 	}
 
-	private void playPlayersTurn() {
+	public void playPlayersTurn(InputView inputView) {
 		for (Player player : players) {
 			while (!player.isBurst() && player.shouldDrawCard()) {
 				player.draw(deck.draw());
 			}
+
+			System.out.printf("%s카드: %s%n", player.getName(), player.getHand().getCards());
+			if (!this.inputView.askDrawCard(player.getName())) {
+				player.stopDrawing(); // 사용자 입력이 n일 경우 카드 그만 받기
+			}
 		}
 	}
 
-	private void playDealerTurn() {
+	public void playDealerTurn() {
 		while (!dealer.isBurst() && dealer.shouldDrawCard()) {
 			dealer.draw(deck.draw());
 		}
 	}
 
 	// todo: 리팩토링 할 것
-	private void calculateResults() {
+	public void calculateResults() {
 		for (Player player : players) {
 			int betMoney = player.getBetMoney();
 			int profit = 0;
@@ -86,5 +93,9 @@ public class BlackjackGame {
 
 	public Dealer getDealer() {
 		return dealer;
+	}
+
+	public Map<String, Integer> getResultMap() {
+		return Collections.unmodifiableMap(profitResult);
 	}
 }
