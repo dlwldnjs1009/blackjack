@@ -19,7 +19,7 @@ public class Hand {
 
 		for (Card card : cards) {
 			score += card.getMinValue();
-			if (card.getNumber().isAce()) { // todo: . 줄이는 방법 생각
+			if (card.isAce()) { 
 				aceCount++;
 			}
 		}

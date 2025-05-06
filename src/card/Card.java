@@ -21,6 +21,10 @@ public class Card {
 		return number.getMinValue();
 	}
 
+	public boolean isAce() {
+		return number.isAce();
+	}
+
 	@Override
 	public String toString() {
 		return number.name()+ "(" + suit.name() + ")";
